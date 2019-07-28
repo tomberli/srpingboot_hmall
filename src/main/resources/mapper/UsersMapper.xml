@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lmx.hmall.mapper.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.lmx.hmall.dto.Users">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+
+  <!-- 更新用户信息 -->
+  <update id="updateUser">
+     update users set username=#{username},password=#{password} where id=#{id}
+  </update>
+
+  <!--删除用户-->
+  <delete id="deleteUser">
+    delete from users where id=#{id}
+  </delete>
+
+
+  <!--用户登陆查询-->
+  <select id="userLogin" resultMap="BaseResultMap">
+      select * from users where username=#{username} and password=#{password}
+  </select>
+  <!--返回所有的用户-->
+  <select id="findAllUsers" resultMap="BaseResultMap">
+      select * from users;
+  </select>
+  <!-- 用户注册 -->
+  <insert id="userRegister">
+      insert into users values(#{id},#{username},#{password})
+  </insert>
+
+
+</mapper>

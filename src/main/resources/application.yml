@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    name: test
+    url: jdbc:mysql://127.0.0.1:3306/mall
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 2
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: com.lmx.hmall.dto  # 注意：对应实体类的路径
+
+# slf4j日志配置
+logging:
+  # 配置级别
+  level:
+    com.lmx.hmall: info #包下日志等级配置
+    com.lmx.hmall.mapper: debug
+  file: my.log #不加盘符，就会自动到项目下，也可以指定目录D:/my.log 这就会到D盘下
